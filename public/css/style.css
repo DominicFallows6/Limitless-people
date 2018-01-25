@@ -1,0 +1,494 @@
+a.main-logo img {
+    max-width: 200px;
+    margin: 4px 20px 0 -6px;
+}
+
+body {
+    padding: 0 0 0 0;
+    font-family: Lato;
+}
+
+body.padded-head {
+    padding-top: 60px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+h1 {
+    margin: 0 0 10px;
+}
+
+#navbar > ul > li.dropdown.open > ul > li > a > i {
+    width: 30px;
+    text-align: center;
+    margin: 0 0 0 -14px;
+}
+
+*:focus {
+    outline: none;
+}
+
+.navbar-inverse {
+    background: #eee;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+    text-shadow: 0 -1px 0 #fff;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #9d9d9d;
+}
+
+#search_container {
+    float: right;
+}
+
+#search {
+}
+
+.account_form label {
+    width: 150px;
+    float: left;
+    display: block;
+    padding: 7px 0 0 0;
+}
+
+.account_form input {
+    width: 220px;
+    float: left;
+    display: block;
+    margin: 0 0 10px;
+    padding: 5px;
+}
+
+.account_form select {
+    min-width: 220px;
+    float: left;
+    display: block;
+    margin: 0 0 10px;
+    padding: 5px;
+}
+
+.account_form input[type=submit] {
+    display: inline-block;
+    padding: 0 15px;
+    width: auto;
+    margin: 10px 0 0;
+}
+
+.not_registered {
+    margin: 20px 0 0 0;
+}
+
+.idea_container {
+    margin: 0 0 15px;
+}
+
+.idea_name {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.idea_description {
+
+}
+
+.idea_description li {
+    margin: 2px 0 0 15px
+}
+
+.idea_description_full {
+    font-size: 14px;
+    margin: 0 0 25px;
+    padding: 0 0;
+}
+
+.idea_feedback_box {
+    margin: 15px 0;
+    padding: 15px 20px;
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
+    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #ccc;
+}
+
+#edit_profile_form #description {
+    width: 100%;
+}
+
+ul.errors {
+    color: #ff0000;
+    padding: 0;
+}
+
+ul.errors li {
+    padding: 0;
+    list-style-type: none;
+}
+
+h2.user_profile_name {
+    margin-bottom: 5px;
+}
+
+.job_title {
+    font-style: italic;
+}
+
+#main_user_bio {
+    padding: 10px;
+    margin: 0 0 10px;
+}
+
+#new_comment_container {
+    margin: 0 0 20px;
+}
+
+#new_idea_comment {
+    width:100%;
+    height: 50px;
+    padding: 10px;
+    margin: 0 0 10px;
+}
+
+label.error {
+    color: #ff0000;
+    display: block;
+    float: none;
+    width: auto;
+}
+
+#current_profile_avatar_edit img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.ideas_list_image {
+    margin-top: 10px;
+    display: inline-block;
+    max-width: 90%;
+    border-radius: 50%;
+}
+
+.holiday_request_label {
+    display: block;
+}
+
+.requested_date_field {
+    margin: 0 0 10px;
+}
+
+#save_avatar {
+    display: inline-block;
+    margin: 15px 0 0 0;
+}
+
+.business_announcement {
+
+}
+
+.idea_comments {
+    margin: 10px 0 0;
+}
+
+.idea_comment_container {
+    margin: 0 0 10px;
+    border-top: 1px #eee solid;
+}
+
+.idea_comment_container .col-lg-11 {
+    padding: 10px 0 0;
+}
+
+.idea_comment {
+    margin: 0 0;
+}
+
+.current_likes_idea {
+    margin: 10px 0 0 0;
+}
+
+.add_like_button {
+    margin: 0px 0 0 0;
+}
+
+.current_like_idea {
+    margin: 0 10px 10px 0;
+}
+
+.comment_time {
+    font-size: 11px;
+    color: #ccc;
+}
+
+.current-likes {
+    margin: 0 0 10px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    font-size: 0.75em;
+}
+
+.profile_aka {
+    font-size: 12px;
+    color: #A71F2B;
+}
+
+#request_calendar {width: 478px; float: left; margin: 10px 0;}
+#pad_availability_form {margin: 0 0 15px 0}
+#holidayCalendarContainerParent {padding-top: 10px;}
+#pad_availability_form #pad_rates_id {padding: 5px; border: 1px solid #ccc;}
+
+#request_calendar table {border: 1px #def solid;}
+#request_calendar th {border: 0 none; padding: 15px 0;}
+#request_calendar td {border: 1px solid #ddd; height: 45px; padding: 0;text-align: center; width: 56px; cursor: pointer; font-size: 12px;}
+#request_calendar td.selected {background: #73B9FF;}
+#request_calendar td.selected a {color: #fff;}
+#request_calendar a {text-decoration: none}
+#holidayCalendarFormContainer {padding-top: 10px;}
+#holidayCalendarContainer {padding-top: 10px;}
+#holidayCalendarContainer p {}
+#holidayCalendarContainer ul {}
+#holidayCalendarContainer li {}
+#submitMultipleDates {
+    margin: 10px 0 0 0;
+}
+#delete_holiday_request_id {
+    display: none;
+}
+
+div.no_date_data a {
+    padding: 15px 20px;
+}
+
+.half_date_request {
+    background-image: url("/images/half_day_holiday.png") !important;
+    color: #000 !important;
+}
+
+.half_date_request a {
+    color: #000 !important;
+}
+
+#half_day_choice {
+    display: none;
+}
+
+#durationChoice, #period_choice {
+    padding: 5px 5px;
+    width: 150px;
+    font-size: 12px;
+}
+
+.formatted_creation_date {
+    margin-top: 2px;
+    font-size: 10px;
+}
+
+#request_calendar .date_authorised {
+    background: #3e8f3e;
+    color: #fff;
+}
+
+#request_calendar .date_awaiting_authorisation{
+    background: #ff9a00;
+}
+
+#request_calendar .working_absence{
+    background: #6c0b99;
+}
+
+#request_calendar .date_not_authorised{
+    background: #ff0000;
+}
+
+#request_calendar .date_added a {
+    color: #fff;
+}
+
+#request_calendar .date_added {
+    padding: 13px 0 14px;
+}
+
+#request_calendar th {
+    text-align: center;
+}
+
+.hr_data_label {
+    font-weight: bold;
+}
+
+.hr_data_value {
+    margin: 0 0 10px;
+}
+
+.holiday_request_date_id {
+    display: none;
+}
+
+.leave-box {
+    border-bottom: 1px #eee solid;
+    height: 100px;
+}
+
+.user_profile_name a {
+    color: #A71F2B;
+}
+
+@media screen and (min-width: 768px) {
+    #powhrModal .modal-dialog {
+        width: 80%;
+    }
+}
+
+#currentMonth, #currentYear {
+    display: none;
+}
+
+.dashboard_announcements .business_announcement {
+    padding: 10px 10px;
+}
+
+.dashboard_announcements .business_announcement h5 {
+    font-weight: bold;
+}
+
+.dashboard_announcements .business_announcement p {
+    margin: 0;
+}
+
+.dashboard_announcements .business_announcement p.business_announcement_datetime {
+    margin-top: 10px;
+    color: #ccc;
+    font-size: 11px;
+}
+
+.dashboard_announcements .odd-announcement {
+    border-top: 1px solid #ddd;
+}
+
+.dashboard_announcements .even-announcement {
+    border-top: 1px solid #ddd;
+}
+
+#upload-instruction.error {
+    color: #ff0000;
+}
+
+.uploaded-file-list {
+    word-wrap: break-word;
+}
+
+.team_calendar {
+
+}
+
+.team_calendar_date_digit {
+
+}
+
+#team_calendar td {
+    font-size: 11px;
+    text-align: center;
+    border: 1px #eee solid;
+    width: 14.28%;
+}
+
+.team_calendar_today {
+    min-height: 79px;
+    margin: 0px 0 0 0px;
+    background: #B4D7BF;
+}
+
+#team_calendar th.calendar_month {
+    text-align: center;
+}
+
+#team_calendar .team_calendar_date {
+    font-weight: bold;
+    border-bottom: 1px #fff solid;
+}
+
+#team_calendar .team_calendar_content {
+    min-height: 50px;
+}
+
+.team-view-next {
+    text-align: right;
+}
+
+.team_date_added {
+    margin-bottom: 1px;
+}
+
+.team_date_awaiting_authorisation {
+    background: #ff9a00;
+}
+
+.team_date_authorised {
+    background: #3e8f3e;
+    color: #fff;
+}
+
+.team_date_not_authorised {
+    background: #ff0000;
+    color: #fff;
+}
+
+.team_date_working_absence {
+    background: #6c0b99;
+    color: #fff;
+}
+
+.holiday_request_key_label {
+
+}
+
+.holiday_request_key {
+    width: 100px;
+    padding: 0 5px;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+#extra_attendance_information, #extra_attendance_information p {
+    color: #ff0000;
+}
+
+#extra_attendance_information p {
+    color: #ff0000;
+    line-height: 10px;
+    padding: 0 0 0 10px;
+}
+
+.holiday_request_key_container {
+    margin: 0 0 10px;
+}
+
+.inner-content {
+    padding: 20px;
+}
+
+#attendance_type_drop_options_container {
+
+}

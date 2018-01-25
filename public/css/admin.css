@@ -1,0 +1,9 @@
+.form-group input.form-control {
+    display: inline-block;
+    margin: 0 0 10px;
+}
+
+.form-group textarea.form-control {
+    display: inline-block;
+    margin: 0 0 10px;
+}
