@@ -16,6 +16,13 @@
     </li>
     @endcan
 
+        <li class="parent_li">
+            <a href="/room-booking">
+                <i class="fa fa-pencil-square-o"></i>
+                <span class="menu-text">Room Booking</span>
+            </a>
+        </li>
+
     @can('access_module', \Powhr\Modules\HolidayRequests\Module::MODULE_ID)
 
         <li class="parent_li hoe-has-menu">
@@ -73,5 +80,4 @@
             </a>
         </li>
     @endif
-
 </ul>

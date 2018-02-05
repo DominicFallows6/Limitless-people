@@ -437,6 +437,106 @@ div.no_date_data a {
     text-align: right;
 }
 
+#BookingBlock {
+    height: 300px;
+    width: 300px;
+    border: solid 1px black;
+    overflow: auto;
+}
+
+#BookingBlock div {
+    float: left;
+    text-align: center;
+    border: solid 1px black;
+    height: 50%;
+    width: 50%;
+}
+
+#BookingBlock div:hover {
+    background-color: rgba(15, 164, 242, 0.07);
+}
+
+#roomInformation {
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+    border: solid 2px black;
+    width: 150px;
+}
+
+#room_add input[type=text] {
+    display: block;
+    padding: 5px;
+    width: 220px;
+    margin: 0 0 10px;
+}
+#room_add select {
+    display: block;
+    padding: 5px;
+    width: 220px;
+    margin: 0 0 10px;
+}
+
+#room_add input[type=submit] {
+    border-radius: 4px;
+}
+
+.change-Building a {
+    cursor: pointer;
+}
+
+#allRoomsAdmin a {
+    float: right;
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    width: 61px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.newclass div .btn-primary {
+    float: right;
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    width: 71px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 6px;
+}
+.newclass a {
+    float: right;
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    width: 71px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+#navigation-buttons .btn-primary {
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    width: 71px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    width: 71px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 6px;
+}
+
 .team_date_added {
     margin-bottom: 1px;
 }

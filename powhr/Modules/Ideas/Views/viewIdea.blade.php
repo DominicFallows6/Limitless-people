@@ -150,6 +150,8 @@
                                 <?php
                                 if (file_exists(public_path($com_val->user->profile_pic))) {
                                     $profilePic = $com_val->user->profile_pic;
+                                } else {
+                                    $profilePic = '/images/avatars/image.png';
                                 }
                                 ?>
 

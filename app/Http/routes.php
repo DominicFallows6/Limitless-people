@@ -22,9 +22,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 		return $controllerCall->callAction('get'.$method, array($args));
 
 	});
-
 	Route::post('admin/{namespace?}/{controller?}/{method?}/{args?}', function ($namespace, $controller, $method = 'index', $args = '') {
-
 		//convert from slightly nicer URLs
 		$namespace = studly_case($namespace);
 		$controller = studly_case($controller);
@@ -43,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::controller('dashboard', '\Powhr\Controllers\DashboardController');
 	Route::controller('ideas', '\Powhr\Modules\Ideas\Controllers\IdeasController');
+	Route::controller('room-booking', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingController');
 	Route::controller('users', '\Powhr\Controllers\UserController');
 	Route::controller('organisation_units', '\Powhr\Controllers\OrganisationUnitsController');
 	Route::controller('organisation_units_admin', '\Powhr\Controllers\Admin\OrganistationUnitsController');
@@ -135,6 +134,9 @@ Route::get('importer-holidays', function(){
 
 });
 
+Route::post('room-booking-admin/add-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postAddRoom');
+Route::post('room-booking-admin/delete-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postDeleteRoom');
+Route::post('room-booking-admin/edit-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postEditRoom');
 // Password reset link request routes... Laravel Provided
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');

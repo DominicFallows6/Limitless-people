@@ -24,6 +24,7 @@
                         <li><a href="/users_admin/">Users</a></li>
                         <li><a href="/admin/ideas/ideas-admin">Ideas</a></li>
                         <li><a href="/admin/staff-docs/staff-docs-admin/">Business Docs</a></li>
+                        <li><a href="/admin/RoomBooking/room-booking-admin/">Room Booking</a></li>
                     </ul>
                 </li>
                 <li><a href="/account/logout">Logout</a></li>
