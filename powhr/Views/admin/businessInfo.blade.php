@@ -36,6 +36,20 @@
                     <div class="clearfix"></div>
                 </div>
 
+                <h>Select business start time and end time</h>
+
+                <div>
+                    {!!Form::label('default_start_time', 'Default Start Time', array('id' => 'for_default_start_time')) !!}
+                    {!!Form::text('start_time', null, array('id'=>'default_start_time'))!!}
+                    <div class="clearfix"></div>
+                </div>
+
+                <div>
+                    {!!Form::label('default_end_time', 'Default End Time', array('id' => 'for_default_end_time')) !!}
+                    {!!Form::text('end_time', null, array('id'=>'default_end_time'))!!}
+                    <div class="clearfix"></div>
+                </div>
+
                 <div>
                     {!!Form::submit('Save', ['id'=>'Go', 'class'=>'btn btn-primary'])!!}
                 </div>
@@ -47,5 +61,6 @@
         </div>
 
     </div>
+
 
 @stop

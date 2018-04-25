@@ -10,19 +10,10 @@ namespace Powhr\Modules\RoomBooking\Interfaces;
 
 interface RoomBookingInterface
 {
+   function roomInformationNames(array $data);
 
-    public function RoomInformation($Id);
 
-    public function Rooms();
+   function addRoom(array $attributes);
 
-    public function getAllRooms();
-
-    public function getMoreRooms($Id);
-
-    public function addRoom(array $attributes);
-
-    public function deleteRoom($id);
-
-    public function editRoom(array $attributes);
-
+   function getAllRooms();
 }

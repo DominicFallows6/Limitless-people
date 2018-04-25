@@ -13,14 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * Base Class powhrEloquentModel for Eloquent Models
  * @package Powhr\Models
  */
-class RoomBookingModel extends Model
+class RoomBookingBookingsModel extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'room_information';
+    protected $table = 'room_bookings';
 
     /**
      * The attributes that are mass assignable.

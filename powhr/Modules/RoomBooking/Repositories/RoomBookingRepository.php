@@ -9,6 +9,9 @@
 namespace Powhr\Modules\RoomBooking\Repositories;
 
 use Powhr\Models\User;
+use Powhr\Models\RoomBookingModel;
+use Powhr\Models\RoomBookingBookingsModel;
+use Powhr\Models\Business;
 use Powhr\Models\PowhrEloquentModel;
 use Powhr\Modules\RoomBooking\Interfaces\RoomBookingInterface;
 
@@ -16,101 +19,76 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
 {
 
     protected $userModel;
-    protected $table = 'room_information';
+    protected $RoomBookingModel;
+    protected $roomBookingBookingsModel;
+    protected $businessModel;
 
-    public function __construct(array $attributes = [], User $userModel)
+    public function __construct(array $attributes = [], User $userModel, RoomBookingModel $RoomBookingModel, Business $businessModel, RoomBookingBookingsModel $roomBookingBookingsModel)
     {
         parent::__construct($attributes);
         $this->userModel = $userModel;
+        $this->RoomBookingModel = $RoomBookingModel;
+        $this->businessModel = $businessModel;
+        $this->roomBookingBookingsModel = $roomBookingBookingsModel;
     }
 
-    public function roomInformation($Id)
+    function roomInformationNames(array $data)
     {
         /** @var \Illuminate\Database\Query\Builder $query */
-
-        $query = $this->userModel->select(['*']);
-        $query->from('room_information');
-        $query->where('id', '=', $Id);
-        $results = $query->get();
-
+        $query = $this->RoomBookingModel->select('room_name');
+        $query->where('building_id', '=', $data['buildingId']);
+        $results = $query->get()->toArray();
         return $results;
     }
 
-    public function getAllRooms()
+    function BookingInformation(array $data)
     {
         /** @var \Illuminate\Database\Query\Builder $query */
 
-        $query = $this->userModel->select(['*']);
-        $query->from('room_information');
-        $results = $query->get();
+        $query = $this->roomBookingBookingsModel->select([
+            'room_bookings.requested_time',
+            'room_bookings.requested_time_end',
+            'room_bookings.user_id',
+            'room_information.room_name',
+            'room_information.id'
+        ]);
+        $query->leftJoin('room_information', 'room_bookings.room_information_id', '=', 'room_information.id');
+        $query->where('room_information.building_id', '=', $data['buildingId']);
+        $results = $query->get()->toArray();
 
         return $results;
+
     }
 
-    public function Rooms()
+    function roomBookingTimes()
     {
         /** @var \Illuminate\Database\Query\Builder $query */
-
-        $query = $this->userModel->select(['*']);
-        $query->from('room_information');
-        $query->where('building_id', '=', '1');
-        $results = $query->get();
-
-        return $results;
-    }
-
-    public function getMoreRooms($Id)
-    {
-        /** @var \Illuminate\Database\Query\Builder $query */
-
-        $query = $this->userModel->select(['*']);
-        $query->from('room_information');
-        $query->where('building_id', '=', $Id);
-        $results = $query->get();
+        $times = $this->businessModel->select('start_time', 'end_time');
+        $results = $times->get()->toArray();
 
         return $results;
     }
 
     public function addRoom(array $attributes)
     {
-        $this->room_name = $attributes['room_name'];
-        $this->room_seats = $attributes['room_seats'];
-        $this->building_id = $attributes['building_id'];
-        if($this->save()){
-           return(true);
+        $this->RoomBookingModel->room_name = $attributes['room_name'];
+        $this->RoomBookingModel->room_seats = $attributes['room_seats'];
+        $this->RoomBookingModel->building_id = $attributes['building_id'];
+
+        if ($this->RoomBookingModel->save()) {
+            return (true);
         } else {
-          return(false);
+            return (false);
         }
     }
 
-    public function deleteRoom($id)
+    public function getAllRooms()
     {
-        if($this->where(array('id' => $id))->delete()) {
-            return(true);
-        } else {
-            return(false);
-        }
-    }
+        /** @var \Illuminate\Database\Query\Builder $query */
 
-    public function editRoom(array $attributes)
-    {
-        $id = $attributes['id'];
+        $query = $this->RoomBookingModel->select(['*']);
+        $results = $query->get();
 
-        $room_name = $attributes['room_name'];
-        $room_seats = $attributes['room_seats'];
-        $building_id = $attributes['building_id'];
-
-        $attribute = [
-            'room_name' => $room_name,
-            'room_seats' => $room_seats,
-            'building_id' => $building_id
-        ];
-
-        if($this->where('id', $id)->update($attribute)){
-            return(true);
-        } else {
-            return(false);
-        }
-
+        return $results;
     }
 }

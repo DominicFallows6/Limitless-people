@@ -28,7 +28,9 @@ class AdminController extends \Powhr\Controllers\Admin\BaseAdminController
 
             $rules = array(
                 'business_name' => 'min:3|required',
-                'default_days_leave'=>'numeric|required'
+                'default_days_leave'=>'numeric|required',
+                'start_time'=>'date_format:H:i|required|max:5|min:5',
+                'end_time'=>'date_format:H:i|after:start_time|required|max:5|min:5'
             );
 
             $validator = \Validator::make($data, $rules);
@@ -37,6 +39,8 @@ class AdminController extends \Powhr\Controllers\Admin\BaseAdminController
 
                 $business = Business::find($businessID);
                 $business->business_name = $data['business_name'];
+                $business->start_time = $data['start_time'];
+                $business->end_time = $data['end_time'];
                 $business->default_days_leave = $data['default_days_leave'];
                 $business->save();
 

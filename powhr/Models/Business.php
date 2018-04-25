@@ -24,6 +24,8 @@ class Business extends PowhrEloquentModel
     function addBusiness($data)
     {
         $this->business_name = $data['business_name'];
+        $this->start_time = $data['start_time'];
+        $this->end_time = $data['end_time'];
         $this->unique_id = $data['unique_id'];
         $this->default_days_leave = $data['default_days_leave'];
         $this->save();

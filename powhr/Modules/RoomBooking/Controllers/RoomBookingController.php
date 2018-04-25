@@ -6,47 +6,62 @@ use Illuminate\Http\Request;
 use Powhr\Contracts\PublicAssetsInterface;
 use Powhr\Modules\RoomBooking\Repositories\RoomBookingRepository;
 use Powhr\Modules\RoomBooking\Module;
+use Powhr\Modules\RoomBooking\Services\RoomBookingService;
 
 class RoomBookingController extends Module
 {
 
     protected $bookingInterface;
+    protected $bookingInterfaceMonth;
+    protected $RoomBookingService;
 
     function __construct(
         Request $request,
         PublicAssetsInterface $publicAssets,
-        RoomBookingRepository $bookingRepository
+        RoomBookingRepository $bookingRepository,
+        RoomBookingService $RoomBookingService
     )
     {
         parent::__construct($request, $publicAssets);
 
         $this->bookingInterface = $bookingRepository;
+        $this->RoomBookingService = $RoomBookingService;
     }
 
     public function getIndex()
     {
-        $rooms = $this->bookingInterface->Rooms();
-
-
-        //this may change later for something more efficient
-        return \View::make('viewRoom')->with('rooms', $rooms);
+        return \View::make('viewRoom');
     }
 
-    public function getMoreRooms()
+    public function getCreateRoomBookingTable()
     {
-        $buildingId = $this->request->input('building_id');
-        $rooms = $this->bookingInterface->getMoreRooms($buildingId);
+        $decideMonthDayWeek = '';
 
-        return \View::make('roomViews')->with('rooms', $rooms);
+        if ($this->request->get('view-month')) {
+            $dayWeekMonth = $this->request->get('view-month');
+            $decideMonthDayWeek = 'month';
+        } else if ($this->request->get('view-week')) {
+            $dayWeekMonth = $this->request->get('view-week');
+            $decideMonthDayWeek = 'week';
+        } else if ($this->request->get('view-day')) {
+            $dayWeekMonth = $this->request->get('view-day');
+            $decideMonthDayWeek = 'day';
+        } else {
+            $dayWeekMonth = '';
+        }
+
+        $building = $this->request->get('area');
+
+        $dataFromGet = ['buildingId' => $building, 'MonthWeekDay' => $dayWeekMonth, 'checkMonthDayWeek' => $decideMonthDayWeek];
+
+        $tableData = $this->RoomBookingService->getDataForRoom($dataFromGet);
+
+        $building = null;
+        $dataFromGet = null;
+        $dayWeekMonth = null;
+        $decideMonthDayWeek = null;
+
+        return \View::make('viewRoom')->with('Data', $tableData);
     }
 
-    public function getRoomInfo()
-    {
-        $roomNumber = $this->request->input('room_number');
-        $roomInfo = $this->bookingInterface->roomInformation($roomNumber);
-
-        $roomInfoAsString = json_encode($roomInfo);
-        return $roomInfoAsString;
-
-    }
 }

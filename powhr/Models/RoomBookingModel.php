@@ -13,21 +13,25 @@ use Illuminate\Database\Eloquent\Model;
  * Base Class powhrEloquentModel for Eloquent Models
  * @package Powhr\Models
  */
-class PowhrEloquentModel extends Model
+class RoomBookingModel extends Model
 {
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'room_information';
 
     /**
-     * Unified method for interfaced version of eloquent models
-     * @param $id
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
-    function getItem($id, $key = 'id')
-    {
-        return $this->find($id);
-    }
-    
-    function getAll(array $args = [])
-    {
-        
-    }
 
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['remember_token'];
 }

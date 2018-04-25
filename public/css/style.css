@@ -485,6 +485,57 @@ div.no_date_data a {
     cursor: pointer;
 }
 
+.even_row {
+    background-color: #ffffff;
+    border: solid 1px black;
+
+}
+
+tr .new {
+    border-right: solid 1px black;
+}
+
+.room_Booked {
+    text-align: center;
+    border: solid 1px black;
+    background-color: red;
+}
+
+tr th {
+    color: white;
+    background-color: rgba(24, 16, 57, 0.85);
+    text-align: center;
+    border-right: solid 1px #000000;
+    width: 52px;
+}
+
+tr th a {
+    color: rgba(255, 255, 255, 255);
+}
+
+.new:hover {
+    background-color: #dddaff;
+}
+
+.even_row .room_Name{
+    color: white;
+    background-color: rgba(24, 16, 57, 0.85);
+    text-align: center;
+    border: solid 1px #000000;
+    width: 3%;
+    height: 59px;
+    padding: 1.5em;
+}
+
+.even_row:hover .time {
+    background-color: #f2f4f6;
+    color: black;
+}
+.odd_row:hover .time {
+    background-color: #f2f4f6;
+    color: black;
+}
+
 #allRoomsAdmin a {
     float: right;
     cursor: pointer;
@@ -517,6 +568,19 @@ div.no_date_data a {
     border-radius: 6px;
 }
 
+#roomBookingCalendarContainer {
+    float: right;
+    display: inline-block;
+    margin-right: 300px;
+}
+
+#roomBookingDateSelect {
+    float: right;
+    display: inline-block;
+    margin-right: 50%;
+    margin-top: 5%;
+}
+
 #navigation-buttons .btn-primary {
     cursor: pointer;
     margin: 2px;
@@ -535,6 +599,10 @@ div.no_date_data a {
     padding: 10px;
     height: 40px;
     border-radius: 6px;
+}
+
+.table_main {
+    width: 100%;
 }
 
 .team_date_added {
