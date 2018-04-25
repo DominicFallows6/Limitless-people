@@ -37,9 +37,11 @@ class MonthlyRoomBooking extends RoomBookingAbstractClass
             $tableMid .= "<tr class='even_row'><td class='room_Name' id='room_Name'>{$booking['Room']}</td>";
             $a = 0;
             $e = 0;
-            $i = 0;
+            $bookingsFromTime = null;
+            $bookingsToTime = null;
 
             foreach ($times as $time) {
+                $currentTime = strtotime($time);
 
                 if ($a == count($booking['Bookings'])) {
                     $a = 0;
@@ -50,16 +52,24 @@ class MonthlyRoomBooking extends RoomBookingAbstractClass
 
                 if (count($booking['Bookings']) < 1) {
                     $tableMid .= "<td class='new' id='no_Bookings'></td>";
-                    $i++;
                 } else if ($booking['Bookings'][$a]['start_Time'] == $time) {
                     $tableMid .= "<td class='room_Booked' id='{$booking['Bookings'][$a]['start_Time']}'>{$booking['Bookings'][$a]['user_Id']}</td>";
+                    $bookingsFromTime = strtotime($booking['Bookings'][$a]['start_Time']);
+                    $bookingsToTime = null;
                     $a++;
                 } else if ($booking['Bookings'][$e]['end_Time'] == $time) {
-                    $tableMid .= "<td class='room_Booked' id='{$booking['Bookings'][$e]['start_Time']}'>{$booking['Bookings'][$e]['user_Id']}</td>";
+                    $tableMid .= "<td class='room_Booked_End' id='{$booking['Bookings'][$e]['start_Time']}'></td>";
+                    $bookingsToTime = strtotime($booking['Bookings'][$e]['end_Time']);
                     $e++;
+                } else if (isset($bookingsFromTime) && $currentTime > $bookingsFromTime ) {
+                    if(isset($bookingsToTime)){
+                        $tableMid .= "<td class='new' id='no_Bookings'></td>";
+                    }else {
+                        $tableMid .= "<td class='room_Booked_Middle' id='multi_book'></td>";
+                        $bookingsToTime = null;
+                    }
                 } else {
                     $tableMid .= "<td class='new' id='no_Bookings'></td>";
-                    $i++;
                 }
 
             }
