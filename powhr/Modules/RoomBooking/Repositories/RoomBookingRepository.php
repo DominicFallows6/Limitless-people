@@ -56,6 +56,14 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
         $query->where('room_information.building_id', '=', $data['buildingId']);
         $results = $query->get()->toArray();
 
+        foreach ($results as $key => $result){
+            $query = $this->userModel->select('first_name', 'surname');
+            $query->where('id', '=', $result['user_id']);
+            $users = $query->get()->toArray();
+            $userName = $users[0]['first_name'] . ' ' . $users[0]['surname'];
+            $results[$key]['user_id'] = $userName;
+        }
+
         return $results;
 
     }
