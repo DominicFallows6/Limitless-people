@@ -10,6 +10,7 @@ namespace Powhr\Modules\RoomBooking\Repositories;
 
 use Powhr\Models\User;
 use Powhr\Models\RoomBookingModel;
+use Powhr\Models\BuildingModel;
 use Powhr\Models\RoomBookingBookingsModel;
 use Powhr\Models\Business;
 use Powhr\Models\PowhrEloquentModel;
@@ -22,10 +23,12 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
     protected $RoomBookingModel;
     protected $roomBookingBookingsModel;
     protected $businessModel;
+    protected $BuildingModel;
 
-    public function __construct(array $attributes = [], User $userModel, RoomBookingModel $RoomBookingModel, Business $businessModel, RoomBookingBookingsModel $roomBookingBookingsModel)
+    public function __construct(array $attributes = [], User $userModel,BuildingModel $BuildingModel, RoomBookingModel $RoomBookingModel, Business $businessModel, RoomBookingBookingsModel $roomBookingBookingsModel)
     {
         parent::__construct($attributes);
+        $this->BuildingModel = $BuildingModel;
         $this->userModel = $userModel;
         $this->RoomBookingModel = $RoomBookingModel;
         $this->businessModel = $businessModel;
@@ -98,5 +101,28 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
         $results = $query->get();
 
         return $results;
+    }
+
+    function addArea(array $attributes){
+        $this->BuildingModel->building_name = $attributes['building_name'];
+
+        if($this->BuildingModel->save()){
+            return(true);
+        } else {
+            return(false);
+        }
+    }
+
+    function getArea()
+    {
+        $query = $this->BuildingModel->select('building_name');
+        $results = $query->get()->toArray();
+        $buildings = '';
+
+        foreach ($results as $result)
+        {
+            $buildings .= "<option value='{$result['building_name']}'>{$result['building_name']}</option>";
+        }
+        return $buildings;
     }
 }

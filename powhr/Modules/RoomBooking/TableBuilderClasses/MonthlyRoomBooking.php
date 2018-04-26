@@ -53,19 +53,19 @@ class MonthlyRoomBooking extends RoomBookingAbstractClass
                 if (count($booking['Bookings']) < 1) {
                     $tableMid .= "<td class='new' id='no_Bookings'></td>";
                 } else if ($booking['Bookings'][$a]['start_Time'] == $time) {
-                    $tableMid .= "<td class='room_Booked' id='{$booking['Bookings'][$a]['start_Time']}'>{$booking['Bookings'][$a]['user_Id']}</td>";
+                    $tableMid .= "<td colspan='1' class='room_Booked' id='room_Booked_Start'>{$booking['Bookings'][$a]['user_Id']}</td>";
                     $bookingsFromTime = strtotime($booking['Bookings'][$a]['start_Time']);
                     $bookingsToTime = null;
                     $a++;
                 } else if ($booking['Bookings'][$e]['end_Time'] == $time) {
-                    $tableMid .= "<td class='room_Booked_End' id='{$booking['Bookings'][$e]['start_Time']}'></td>";
+                    $tableMid .= "<td class='room_Booked' id='room_Booked_End'></td>";
                     $bookingsToTime = strtotime($booking['Bookings'][$e]['end_Time']);
                     $e++;
-                } else if (isset($bookingsFromTime) && $currentTime > $bookingsFromTime ) {
-                    if(isset($bookingsToTime)){
+                } else if (isset($bookingsFromTime) && $currentTime > $bookingsFromTime) {
+                    if (isset($bookingsToTime)) {
                         $tableMid .= "<td class='new' id='no_Bookings'></td>";
-                    }else {
-                        $tableMid .= "<td class='room_Booked_Middle' id='multi_book'></td>";
+                    } else {
+                        $tableMid .= "<td class='room_Booked' id='room_Booked'></td>";
                         $bookingsToTime = null;
                     }
                 } else {

@@ -492,28 +492,17 @@ div.no_date_data a {
 }
 
 tr .new {
-    border-right: solid 1px black;
+    border: solid 1px black;
 }
 
 .room_Booked {
     text-align: center;
-    border-right: solid 1px #ff4f51;
     background-color: #ff4f51;
     overflow: hidden;
 }
-.room_Booked_End {
-    text-align: center;
-    border-left: solid 1px #ff4f51;
-    border-top: solid 1px black;
-    border-bottom: solid 1px black;
-    border-right: solid 1px black;
-    background-color: #ff4f51;
-}
-.room_Booked_Middle {
-    text-align: center;
-    border: solid 1px #ff4f51;
-    border-top: solid 1px black;
-    border-bottom: solid 1px black;
+
+.multi_Booking {
+    text-align: left;
     background-color: #ff4f51;
 }
 

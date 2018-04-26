@@ -75,4 +75,37 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
         return \View::make('deleteRoom')->with('rooms', $rooms);
     }
 
+    public function getAddBuilding()
+    {
+        return \view::make('addBuilding');
+    }
+
+    public function postAddBuilding(Request $request)
+    {
+
+        //if your want to get single element,someName in this case
+        $building_name = $request->building_name;
+
+        $error = [];
+
+
+        if (strlen($building_name) < 1) {
+            $error[] = 'Please enter room name';
+        }
+
+        if ($error == null) {
+
+            $attributes = [
+                'building_name' => $building_name,
+            ];
+
+            $result = $this->bookingInterface->addArea($attributes);
+
+            return \view::make('addBuilding')->with('result', $result);
+        } else {
+            return \view::make('addBuilding')->with('errors', $error);
+        }
+
+    }
+
 }

@@ -56,12 +56,14 @@ class RoomBookingController extends Module
 
         $tableData = $this->RoomBookingService->getDataForRoom($dataFromGet);
 
+        $buildings = $this->bookingInterface->getArea();
+
         $building = null;
         $dataFromGet = null;
         $dayWeekMonth = null;
         $decideMonthDayWeek = null;
 
-        return \View::make('viewRoom')->with('Data', $tableData);
+        return \View::make('viewRoom')->with('Data', $tableData)->with('Buildings', $buildings);
     }
 
 }
