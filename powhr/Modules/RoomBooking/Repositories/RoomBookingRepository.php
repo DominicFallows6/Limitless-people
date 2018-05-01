@@ -113,16 +113,44 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
         }
     }
 
-    function getArea()
+    function getArea($selectOrAll)
     {
-        $query = $this->BuildingModel->select('building_name');
+        $query = $this->BuildingModel->select('*');
         $results = $query->get()->toArray();
         $buildings = '';
 
-        foreach ($results as $result)
-        {
-            $buildings .= "<option value='{$result['building_name']}'>{$result['building_name']}</option>";
+        if($selectOrAll == 1) {
+            foreach ($results as $result) {
+                $buildings .= "<option value='{$result['building_name']}'>{$result['building_name']}</option>";
+            }
+            return $buildings;
+        } else {
+            return $results;
         }
-        return $buildings;
+    }
+
+    function deleteBuilding($id)
+    {
+        if($this->BuildingModel->where(array('id' => $id))->delete()) {
+            return(true);
+        } else {
+            return(false);
+        }
+    }
+
+    function editBuilding(array $attributes)
+    {
+        $id = $attributes['id'];
+        $buildingName = $attributes['building_name'];
+
+        $attribute = [
+            'building_name' => $buildingName
+        ];
+
+        if($this->BuildingModel->where('id', $id)->update($attribute)){
+            return(true);
+        } else {
+            return(false);
+        }
     }
 }

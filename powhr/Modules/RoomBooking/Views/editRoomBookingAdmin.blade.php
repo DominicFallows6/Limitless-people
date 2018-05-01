@@ -14,7 +14,7 @@
     <div id="navigation-buttons">
         <a class="btn-primary" href="/admin/RoomBooking/room-booking-admin/add-room">Add a room!</a>
         <a class="btn-primary" href="/admin/RoomBooking/room-booking-admin/delete-room">Delete/Edit a room!</a>
-        <a class="btn-primary" href="/admin/RoomBooking/room-booking-admin/add-building">Add a building!</a>
+        <a class="btn-primary" href="/admin/RoomBooking/room-booking-admin/add-building">Add/Edit/Delete Building!</a>
     </div>
 
 @stop

@@ -77,7 +77,41 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
 
     public function getAddBuilding()
     {
-        return \view::make('addBuilding');
+        $buildingNames = $this->bookingInterface->getArea(0);
+
+        return \view::make('addBuilding')->with('buildingNames', $buildingNames);
+    }
+
+    public function postDeleteBuilding(Request $request)
+    {
+        $id = $request->building_id;
+
+        if($results = $this->bookingInterface->deleteBuilding($id) === true){
+            $return = true;
+            return (json_encode($return));
+        } else {
+            $return = false;
+            return (json_encode($return));
+        }
+    }
+
+    public function postEditBuilding(Request $request)
+    {
+        $id = $request->building_id;
+        $building_name = $request->building_name;
+
+        $attributes = [
+            'id' => $id,
+            'building_name' => $building_name
+        ];
+
+        if($results = $this->bookingInterface->editBuilding($attributes) === true) {
+            $return = true;
+            return (json_encode($return));
+        } else {
+            $return = false;
+            return (json_encode($return));
+        }
     }
 
     public function postAddBuilding(Request $request)
@@ -85,12 +119,12 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
 
         //if your want to get single element,someName in this case
         $building_name = $request->building_name;
+        $buildingNames = $this->bookingInterface->getArea(0);
 
         $error = [];
 
-
         if (strlen($building_name) < 1) {
-            $error[] = 'Please enter room name';
+            $error[] = 'Please enter Building name';
         }
 
         if ($error == null) {
@@ -100,12 +134,12 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
             ];
 
             $result = $this->bookingInterface->addArea($attributes);
+            $buildingNames = $this->bookingInterface->getArea(0);
 
-            return \view::make('addBuilding')->with('result', $result);
+            return \view::make('addBuilding')->with('result', $result)->with('buildingNames', $buildingNames);
         } else {
-            return \view::make('addBuilding')->with('errors', $error);
+            return \view::make('addBuilding')->with('errors', $error)->with('buildingNames', $buildingNames);
         }
 
     }
-
 }

@@ -136,9 +136,12 @@ Route::get('importer-holidays', function(){
 
 
 Route::post('room-booking-admin/add-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postAddRoom');
-Route::post('room-booking-admin/add-building', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postAddBuilding');
 Route::post('room-booking-admin/delete-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postDeleteRoom');
 Route::post('room-booking-admin/edit-room', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postEditRoom');
+Route::post('room-booking-admin/add-building', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postAddBuilding');
+Route::post('room-booking-admin/delete-building', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postDeleteBuilding');
+Route::post('room-booking-admin/edit-building', '\Powhr\Modules\RoomBooking\Controllers\RoomBookingAdmin@postEditBuilding');
+
 // Password reset link request routes... Laravel Provided
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');

@@ -12,11 +12,15 @@ interface RoomBookingInterface
 {
     function roomInformationNames(array $data);
 
-    function getArea();
+    function getArea($selectOrAll);
 
     function addRoom(array $attributes);
 
     function addArea(array $attributes);
 
     function getAllRooms();
+
+    function deleteBuilding($id);
+
+    function editBuilding(array $attributes);
 }

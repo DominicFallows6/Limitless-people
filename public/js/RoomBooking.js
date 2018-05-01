@@ -29,15 +29,6 @@ $(document).ready(function () {
         });
     });
 
-    $.ajax({
-        type: 'get',
-        url: '/room-booking/get-booked-rooms',
-        success: function (data) {
-            showBookedRooms(data);
-        }
-    });
-
-
     $('#roomBookingDateSelect').children().hide();
 
 });
@@ -86,6 +77,56 @@ function editRoom(id) {
     }
 }
 
+function deleteBuilding(id) {
+
+    $.post('/room-booking-admin/delete-building', {
+        building_id: id,
+        _token: $('meta[name="csrf-token"]').attr('content')
+    }, function (data) {
+        if (JSON.parse(data) === true) {
+            $('#' + id).parent('#buildingDiv').fadeOut(500), function () {
+                $('#' + id).parent('#buildingDiv').remove();
+            };
+            $('#' + id).parent().html('<h4>deleted</h4>' + '<hr>');
+            $('#buildingDiv h4').fadeOut(900).css('background-color', 'red').css('border-radius', '6px');
+        } else {
+            alert('something went wrong!')
+        }
+    });
+
+}
+
+function editBuilding(id, value) {
+    $('#buildings').children().fadeOut(500), function () {
+        $('#buildings').children().remove();
+    };
+
+    $('#buildings').append('<label>Building name: <input id="edit_building_name" value="'+value+'"></label><br>');
+    $('#buildings').append('<input class="btn-primary" type="submit" onclick="postEditBuilding(' + id + ', 0)">');
+    $('#buildings').append('<input class="btn-primary" type="submit" value="Cancel" onclick="postEditBuilding(0, 0)">');
+}
+
+function postEditBuilding(id, cancel) {
+    if(id == 0 && cancel == 0){
+        window.location.reload();
+    }
+
+    var edited_building;
+
+    edited_building = $('#edit_building_name').val();
+
+    $.post('/room-booking-admin/edit-building', {
+        building_id: id,
+        building_name : edited_building,
+        _token: $('meta[name="csrf-token"]').attr('content')
+    }, function (data) {
+        if (JSON.parse(data) === true) {
+            window.location.reload();
+        } else {
+            alert('something went wrong!')
+        }
+    });}
+
 function postEdit(id, cancel) {
     if (id == 0 && cancel == 0) {
         window.location.reload();
@@ -107,34 +148,6 @@ function postEdit(id, cancel) {
         _token: $('meta[name="csrf-token"]').attr('content')
     }, function () {
         window.location.reload();
-    });
-}
-
-function changeBuilding(room) {
-
-    var buidingId;
-    var changeValue;
-
-    changeValue = $("#room-name").text();
-
-    if (changeValue == 'L1' && room == 'Next') {
-        $("#room-name").html('L2')
-    } else if (changeValue == 'L2' && room == 'Prev') {
-        $("#room-name").html('L1')
-    } else {
-        $("#room-name").html('L1')
-    }
-
-    if (changeValue == 'L1') {
-        buidingId = '2'
-    } else {
-        buidingId = '1'
-    }
-
-    $.get('/room-booking/more-rooms', {
-        building_id: buidingId
-    }, function (data) {
-        $('#viewRoomLayout').html(data);
     });
 }
 

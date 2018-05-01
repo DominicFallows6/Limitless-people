@@ -16,7 +16,7 @@ body.padded-head {
     clear: both;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
     margin: 0 0 10px;
     padding: 0;
 }
@@ -39,7 +39,7 @@ h1 {
     background: #eee;
 }
 
-.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
     text-shadow: 0 -1px 0 #fff;
 }
 
@@ -51,7 +51,7 @@ h1 {
     color: #000;
 }
 
-.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
     color: #9d9d9d;
 }
 
@@ -123,10 +123,10 @@ h1 {
     margin: 15px 0;
     padding: 15px 20px;
     text-shadow: 0 1px 0 #fff;
-    background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
-    background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0));
-    background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+    background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+    background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
     background-repeat: repeat-x;
@@ -165,7 +165,7 @@ h2.user_profile_name {
 }
 
 #new_idea_comment {
-    width:100%;
+    width: 100%;
     height: 50px;
     padding: 10px;
     margin: 0 0 10px;
@@ -178,7 +178,7 @@ label.error {
     width: auto;
 }
 
-#current_profile_avatar_edit img{
+#current_profile_avatar_edit img {
     width: 100%;
     border-radius: 50%;
 }
@@ -254,25 +254,77 @@ label.error {
     color: #A71F2B;
 }
 
-#request_calendar {width: 478px; float: left; margin: 10px 0;}
-#pad_availability_form {margin: 0 0 15px 0}
-#holidayCalendarContainerParent {padding-top: 10px;}
-#pad_availability_form #pad_rates_id {padding: 5px; border: 1px solid #ccc;}
+#request_calendar {
+    width: 478px;
+    float: left;
+    margin: 10px 0;
+}
 
-#request_calendar table {border: 1px #def solid;}
-#request_calendar th {border: 0 none; padding: 15px 0;}
-#request_calendar td {border: 1px solid #ddd; height: 45px; padding: 0;text-align: center; width: 56px; cursor: pointer; font-size: 12px;}
-#request_calendar td.selected {background: #73B9FF;}
-#request_calendar td.selected a {color: #fff;}
-#request_calendar a {text-decoration: none}
-#holidayCalendarFormContainer {padding-top: 10px;}
-#holidayCalendarContainer {padding-top: 10px;}
-#holidayCalendarContainer p {}
-#holidayCalendarContainer ul {}
-#holidayCalendarContainer li {}
+#pad_availability_form {
+    margin: 0 0 15px 0
+}
+
+#holidayCalendarContainerParent {
+    padding-top: 10px;
+}
+
+#pad_availability_form #pad_rates_id {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#request_calendar table {
+    border: 1px #def solid;
+}
+
+#request_calendar th {
+    border: 0 none;
+    padding: 15px 0;
+}
+
+#request_calendar td {
+    border: 1px solid #ddd;
+    height: 45px;
+    padding: 0;
+    text-align: center;
+    width: 56px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#request_calendar td.selected {
+    background: #73B9FF;
+}
+
+#request_calendar td.selected a {
+    color: #fff;
+}
+
+#request_calendar a {
+    text-decoration: none
+}
+
+#holidayCalendarFormContainer {
+    padding-top: 10px;
+}
+
+#holidayCalendarContainer {
+    padding-top: 10px;
+}
+
+#holidayCalendarContainer p {
+}
+
+#holidayCalendarContainer ul {
+}
+
+#holidayCalendarContainer li {
+}
+
 #submitMultipleDates {
     margin: 10px 0 0 0;
 }
+
 #delete_holiday_request_id {
     display: none;
 }
@@ -310,15 +362,15 @@ div.no_date_data a {
     color: #fff;
 }
 
-#request_calendar .date_awaiting_authorisation{
+#request_calendar .date_awaiting_authorisation {
     background: #ff9a00;
 }
 
-#request_calendar .working_absence{
+#request_calendar .working_absence {
     background: #6c0b99;
 }
 
-#request_calendar .date_not_authorised{
+#request_calendar .date_not_authorised {
     background: #ff0000;
 }
 
@@ -470,6 +522,7 @@ div.no_date_data a {
     width: 220px;
     margin: 0 0 10px;
 }
+
 #room_add select {
     display: block;
     padding: 5px;
@@ -479,6 +532,24 @@ div.no_date_data a {
 
 #room_add input[type=submit] {
     border-radius: 4px;
+}
+
+#buildingDiv {
+    height: 100%;
+}
+
+#buildingDiv a {
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    width: 61px;
+    padding: 10px;
+    height: 40px;
+}
+
+#building_Name {
+    width: 350px;
+    margin-right: auto;
 }
 
 .change-Building a {
@@ -501,11 +572,6 @@ tr .new {
     overflow: hidden;
 }
 
-.multi_Booking {
-    text-align: left;
-    background-color: #ff4f51;
-}
-
 tr th {
     color: white;
     background-color: rgba(24, 16, 57, 0.85);
@@ -522,7 +588,7 @@ tr th a {
     background-color: #dddaff;
 }
 
-.even_row .room_Name{
+.even_row .room_Name {
     color: white;
     background-color: rgba(24, 16, 57, 0.85);
     text-align: center;
@@ -532,7 +598,8 @@ tr th a {
 }
 
 .even_row {
-    height: 59px; !important;
+    height: 59px;
+!important;
     overflow: scroll;
 }
 
@@ -540,6 +607,7 @@ tr th a {
     background-color: #f2f4f6;
     color: black;
 }
+
 .odd_row:hover .time {
     background-color: #f2f4f6;
     color: black;
@@ -566,6 +634,7 @@ tr th a {
     height: 40px;
     border-radius: 6px;
 }
+
 .newclass a {
     float: right;
     cursor: pointer;

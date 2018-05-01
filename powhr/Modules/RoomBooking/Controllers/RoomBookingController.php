@@ -56,7 +56,7 @@ class RoomBookingController extends Module
 
         $tableData = $this->RoomBookingService->getDataForRoom($dataFromGet);
 
-        $buildings = $this->bookingInterface->getArea();
+        $buildings = $this->bookingInterface->getArea(1);
 
         $building = null;
         $dataFromGet = null;
