@@ -35,7 +35,7 @@
         @endif
     @endif
     <hr>
-    <h3>All buildings currently in Limitless digital</h3>
+    <h3>All buildings currently in Limitless digitall</h3>
     <hr>
 <div id="buildings">
     @foreach($buildingNames as $building)
