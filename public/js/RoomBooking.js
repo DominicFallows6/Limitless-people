@@ -122,8 +122,6 @@ function postEditBuilding(id, cancel) {
     }, function (data) {
         if (JSON.parse(data) === true) {
             window.location.reload();
-        } else {
-            alert('something went wrong!')
         }
     });}
 

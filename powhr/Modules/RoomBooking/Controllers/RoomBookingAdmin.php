@@ -28,7 +28,9 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
 
     public function getAddRoom()
     {
-        return \View::make('addRoom');
+        $buildings = $this->bookingInterface->getArea(0);
+
+        return \View::make('addRoom')->with('Buildings', $buildings);
     }
 
     public function postAddRoom(Request $request)
@@ -40,6 +42,7 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
         $room_building = $request->room_building;
 
         $error = [];
+        $buildings = $this->bookingInterface->getArea(0);
 
 
         if (strlen($room_name) < 1) {
@@ -61,11 +64,40 @@ class RoomBookingAdmin extends \Powhr\Modules\RoomBooking\Module
 
             $result = $this->bookingInterface->addRoom($attributes);
 
-            return \View::make('addRoom')->with('result', $result);
+            return \View::make('addRoom')->with('result', $result)->with('Buildings', $buildings);
         } else {
-            return \View::make('addRoom')->with('errors', $error);
+            return \View::make('addRoom')->with('errors', $error)->with('Buildings', $buildings);
         }
 
+    }
+
+    public function postEditRoom(Request $request)
+    {
+        $id = $request->room_id;
+        $room_name = $request->room_name;
+        $room_seats = $request->room_seats;
+        $room_building = $request->room_building;
+
+        $attributes = [
+            'id' => $id,
+            'room_name' => $room_name,
+            'room_seats' => $room_seats,
+            'building_id' => $room_building
+        ];
+        $this->bookingInterface->editRoom($attributes);
+
+    }
+
+    public function postDeleteRoom(Request $request)
+    {
+        $id = $request->room_id;
+        if ($this->bookingInterface->deleteRoom($id) === true) {
+            $return = true;
+            return (json_encode($return));
+        } else {
+            $return = false;
+            return (json_encode($return));
+        }
     }
 
     public function getDeleteRoom()

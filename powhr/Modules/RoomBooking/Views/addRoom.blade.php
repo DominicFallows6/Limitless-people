@@ -13,17 +13,17 @@
 
     <form action="{{url('/room-booking-admin/add-room')}}" method="post">
         {{ csrf_field() }}
-        <label for="room_name" >Enter room name
+        <label for="room_name">Enter room name
             <input id="room_name" name="room_name" type="text"></label> <br>
-        <label for="room_seats" >Enter amount of seats
+        <label for="room_seats">Enter amount of seats
             <input id="room_seats" name="room_seats" type="text"></label> <br>
-        <label for="room_building" >Select building
-            <select name="room_building">
-                <option disabled>Select a building</option>
-                <option value="1">L1</option>
-                <option value="2">L2</option>
-            </select></label> <br>
-        <input class="btn-primary" type="submit">
+        <label for="room_building">Select building
+                <select name="room_building">
+                        @foreach($Buildings as $building)
+                            <option value="{{$building['id']}}">{{$building['building_name']}}</option>
+                        @endforeach
+                </select></label>
+            <input class="btn-primary" type="submit">
     </form>
     @if(isset($errors))
         @foreach($errors as $error)

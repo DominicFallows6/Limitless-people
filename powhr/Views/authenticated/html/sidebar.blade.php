@@ -15,9 +15,8 @@
         </a>
     </li>
     @endcan
-
         <li class="parent_li">
-            <a href="/room-booking">
+            <a href="/room-booking/create-room-booking-table?view-day=01&area=1">
                 <i class="fa fa-pencil-square-o"></i>
                 <span class="menu-text">Room Booking</span>
             </a>

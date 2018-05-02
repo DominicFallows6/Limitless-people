@@ -121,7 +121,7 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
 
         if($selectOrAll == 1) {
             foreach ($results as $result) {
-                $buildings .= "<option value='{$result['building_name']}'>{$result['building_name']}</option>";
+                $buildings .= "<option id='{$result['id']}' value='{$result['building_name']}'>{$result['building_name']}</option>";
             }
             return $buildings;
         } else {
@@ -153,4 +153,34 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
             return(false);
         }
     }
+
+    public function editRoom(array $attributes)
+    {
+        $id = $attributes['id'];
+
+        $room_name = $attributes['room_name'];
+        $room_seats = $attributes['room_seats'];
+        $building_id = $attributes['building_id'];
+
+        $attribute = [
+            'room_name' => $room_name,
+            'room_seats' => $room_seats,
+            'building_id' => $building_id
+        ];
+
+        if($this->RoomBookingModel->where('id', $id)->update($attribute)){
+            return(true);
+        } else {
+            return(false);
+        }
+
+    }
+
+    function deleteRoom($id)
+    {
+        if($this->RoomBookingModel->where(array('id' => $id))->delete()) {
+            return(true);
+        } else {
+            return(false);
+        }    }
 }

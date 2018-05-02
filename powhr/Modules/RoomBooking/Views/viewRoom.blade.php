@@ -6,15 +6,14 @@
 
     <h1>Room booking</h1>
     <p>You can book a room from here.</p>
-
+    <label for="buildings">Choose a building
+        <select id="buildings">
+            {{--<option disabled >Please choose a room</option>--}}
     @if(isset($Buildings))
-        <label for="buildings">Choose a building
-            <select id="buildings">
                 {!! $Buildings !!}
-            </select>
-        </label>
     @endif
-
+        </select>
+    </label>
     @if(isset($Data))
         @if($Data == null)
             <p>Sorry, No table</p>
