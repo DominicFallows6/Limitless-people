@@ -27,4 +27,6 @@ interface RoomBookingInterface
     function editRoom(array $attributes);
 
     function deleteRoom($id);
+
+    function addBooking(array $attributes);
 }

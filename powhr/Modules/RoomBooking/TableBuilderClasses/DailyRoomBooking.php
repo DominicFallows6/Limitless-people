@@ -24,6 +24,9 @@ class DailyRoomBooking extends RoomBookingAbstractClass
         $times = $this->setTimeArray($startTime, $endTime);
         $newBookings = $this->setDataArray($data, $rooms);
 
+        if (count($rooms) < 1) {
+            return ('no');
+        }
 
         $tableStart = "<table class='table_main'><thead><tr id='table_first' class='first_last'><th class='first_last'>Room:</th>";
         $tableMid = "</tr></thead><tbody>";
@@ -32,7 +35,7 @@ class DailyRoomBooking extends RoomBookingAbstractClass
         foreach ($times as $key => $time) {
             $tableStart .= "<th class='first_last'>{$time}</th>";
         }
-
+        $i = 0;
         foreach ($newBookings as $booking) {
             $tableMid .= "<tr class='even_row'><td class='room_Name' id='room_Name'>{$booking['Room']}</td>";
             $a = 0;
@@ -51,7 +54,7 @@ class DailyRoomBooking extends RoomBookingAbstractClass
                 }
 
                 if (count($booking['Bookings']) < 1) {
-                    $tableMid .= "<td class='new' id='no_Bookings'></td>";
+                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
                 } else if ($booking['Bookings'][$a]['start_Time'] == $time) {
                     $tableMid .= "<td colspan='1' class='room_Booked' id='room_Booked_Start'>{$booking['Bookings'][$a]['user_Id']}</td>";
                     $bookingsFromTime = strtotime($booking['Bookings'][$a]['start_Time']);
@@ -63,17 +66,17 @@ class DailyRoomBooking extends RoomBookingAbstractClass
                     $e++;
                 } else if (isset($bookingsFromTime) && $currentTime > $bookingsFromTime) {
                     if (isset($bookingsToTime)) {
-                        $tableMid .= "<td class='new' id='no_Bookings'></td>";
+                        $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
                     } else {
                         $tableMid .= "<td class='room_Booked' id='room_Booked'></td>";
                         $bookingsToTime = null;
                     }
                 } else {
-                    $tableMid .= "<td class='new' id='no_Bookings'></td>";
+                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
                 }
 
             }
-
+            $i++;
         }
 
         $tableStart .= $tableMid;

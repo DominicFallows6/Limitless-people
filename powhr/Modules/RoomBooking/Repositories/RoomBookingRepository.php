@@ -183,4 +183,9 @@ class RoomBookingRepository extends PowhrEloquentModel implements RoomBookingInt
         } else {
             return(false);
         }    }
+
+    function addBooking(array $attributes)
+    {
+
+    }
 }

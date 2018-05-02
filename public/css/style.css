@@ -559,10 +559,14 @@ div.no_date_data a {
 .even_row {
     background-color: #ffffff;
     border: solid 1px black;
-
 }
 
-tr .new {
+.selection-box{
+    position: absolute;
+    background: rgba(33, 3, 87, 0.4);
+    border: 1px solid #181039;
+}
+tr #no_Bookings {
     border: solid 1px black;
 }
 
@@ -584,7 +588,7 @@ tr th a {
     color: rgba(255, 255, 255, 255);
 }
 
-.new:hover {
+#no_Bookings:hover {
     background-color: #dddaff;
 }
 

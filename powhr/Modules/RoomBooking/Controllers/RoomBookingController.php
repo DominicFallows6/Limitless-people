@@ -66,4 +66,17 @@ class RoomBookingController extends Module
         return \View::make('viewRoom')->with('Data', $tableData)->with('Buildings', $buildings);
     }
 
+    public function postAddBooking(Request $request)
+    {
+        $attributes = [
+            'room_name' => $request->room_Name,
+            'start_Time' => $request->start_Time,
+            'end_Time' => $request->end_Time,
+            'room_information_id' => $request->area_Id
+        ];
+
+        return $this->bookingInterface->addBooking($attributes);
+
+    }
+
 }
