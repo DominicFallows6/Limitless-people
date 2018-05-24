@@ -15,7 +15,7 @@ class Account extends BaseController
         }
 
         return \View::make('account.login');
-        
+
     }
 
     public function postLogin(\Powhr\Services\User $serviceUser)
@@ -52,7 +52,6 @@ class Account extends BaseController
         }
     }
 
-    /*
     public function getRegister()
     {
 
@@ -116,8 +115,8 @@ class Account extends BaseController
             return \Redirect::to('account/register')->withInput()->withErrors($validator);
         }
     }
-    */
-    
+
+
     public function getLogout() {
         \Auth::logout();
         return \Redirect::to('/')->with('message', 'You are now logged out');

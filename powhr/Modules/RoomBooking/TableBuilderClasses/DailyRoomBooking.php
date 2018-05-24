@@ -54,7 +54,7 @@ class DailyRoomBooking extends RoomBookingAbstractClass
                 }
 
                 if (count($booking['Bookings']) < 1) {
-                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
+                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings' style='background-color: white;'></td>";
                 } else if ($booking['Bookings'][$a]['start_Time'] == $time) {
                     $tableMid .= "<td colspan='1' class='room_Booked' id='room_Booked_Start'>{$booking['Bookings'][$a]['user_Id']}</td>";
                     $bookingsFromTime = strtotime($booking['Bookings'][$a]['start_Time']);
@@ -66,13 +66,13 @@ class DailyRoomBooking extends RoomBookingAbstractClass
                     $e++;
                 } else if (isset($bookingsFromTime) && $currentTime > $bookingsFromTime) {
                     if (isset($bookingsToTime)) {
-                        $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
+                        $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings' style='background-color: white;'></td>";
                     } else {
                         $tableMid .= "<td class='room_Booked' id='room_Booked'></td>";
                         $bookingsToTime = null;
                     }
                 } else {
-                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings'></td>";
+                    $tableMid .= "<td class='{$i},{$booking['Room']},{$time}' id='no_Bookings' style='background-color: white;'></td>";
                 }
 
             }

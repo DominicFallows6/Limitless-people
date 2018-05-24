@@ -15,15 +15,21 @@ class WeeklyRoomBooking extends RoomBookingAbstractClass
 
     public function render(): string
     {
-
         $data = $this->tableData;
         $times = $this->tableTimes;
         $rooms = $this->roomNames;
         $startTime = $times[0]['start_time'];
         $endTime = $times[0]['end_time'];
         $times = $this->setTimeArray($startTime, $endTime);
-        $newBookings = $this->setDataArray($data, $rooms);
 
+        $timestamp = strtotime('last Sunday');
+        $days = array();
+        for ($i = 0; $i < 7; $i++) {
+            $days[] = strftime('%A %b %d', $timestamp);
+            $timestamp = strtotime('+1 day', $timestamp);
+        }
+
+        $newBookings = $this->setDataArray($data, $rooms, $days);
 
         $tableStart = "<table class='table_main'><thead><tr id='table_first' class='first_last'><th class='first_last'>Room:</th>";
         $tableMid = "</tr></thead><tbody>";
@@ -34,7 +40,7 @@ class WeeklyRoomBooking extends RoomBookingAbstractClass
         }
 
         foreach ($newBookings as $booking) {
-            $tableMid .= "<tr class='even_row'><td class='room_Name' id='room_Name'>{$booking['Room']}</td>";
+            $tableMid .= "<tr class='even_row'><td class='room_Name' id='room_Name'>{$booking['Day']}</td>";
             $a = 0;
             $e = 0;
             $bookingsFromTime = null;
@@ -42,7 +48,6 @@ class WeeklyRoomBooking extends RoomBookingAbstractClass
 
             foreach ($times as $time) {
                 $currentTime = strtotime($time);
-
                 if ($a == count($booking['Bookings'])) {
                     $a = 0;
                 }
@@ -96,18 +101,21 @@ class WeeklyRoomBooking extends RoomBookingAbstractClass
         return ($times);
     }
 
-    public function setDataArray($data, $rooms)
+    public function setDataArray($data, $rooms, $days)
     {
         $newBookings = [];
-
         $x = 0;
-        foreach ($rooms as $key) {
+
+        foreach ($days as $day) {
             $newBookings[$x] = array(
-                'Room' => $key['room_name'], 'Bookings' => []
+                'Day' => $day, 'Bookings' => []
             );
-            $y = 0;
             foreach ($data as $value) {
-                if ($value['room_name'] == $newBookings[$x]['Room']) {
+                $y = 0;
+                $addDay = strtotime($value['requested_date']);
+                $valueDay = strftime('%A %b %d', $addDay);
+
+                if ($valueDay == $day) {
                     $newBookings[$x]['Bookings'][$y] = [
                         'room_Name' => $value['room_name'],
                         'start_Time' => $value['requested_time'],
@@ -119,7 +127,8 @@ class WeeklyRoomBooking extends RoomBookingAbstractClass
             }
             $x++;
         }
-        return ($newBookings);
 
+        return $newBookings;
     }
+
 }

@@ -568,6 +568,7 @@ div.no_date_data a {
 }
 tr #no_Bookings {
     border: solid 1px black;
+    background-color: white;
 }
 
 .room_Booked {

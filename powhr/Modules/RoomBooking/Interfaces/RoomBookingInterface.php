@@ -14,6 +14,8 @@ interface RoomBookingInterface
 
     function getArea($selectOrAll);
 
+    function getRooms($selectOrAll, $id);
+
     function addRoom(array $attributes);
 
     function addArea(array $attributes);
@@ -29,4 +31,7 @@ interface RoomBookingInterface
     function deleteRoom($id);
 
     function addBooking(array $attributes);
+
+    function getBookingRoomId($id, $id1);
+
 }

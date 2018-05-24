@@ -9,26 +9,40 @@
     <p>You can book a room from here.</p>
     <label for="buildings">Choose a building
         <select id="buildings">
-            {{--<option disabled >Please choose a room</option>--}}
+            <option disabled>Please choose a building</option>
             @if(isset($Buildings))
                 {!! $Buildings !!}
             @endif
         </select>
     </label>
-    <div id="container">
-    @if(isset($Data))
-        @if($Data == 'no')
-            <h5>Sorry, No rooms added to this building yet!</h5>
-        @else
-            {!! $Data !!}
+
+    <div id="roomSelector">
+        <label for="roomSelect">Choose Room
+            <select id="roomSelect">
+                <option disabled>Please choose a building</option>
+                @if(isset($rooms))
+                    {!! $rooms !!}
+                @endif
+            </select>
+        </label>
     </div>
-            <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?view-month=<?php echo date("m"); ?>&area=1">View
-                month</a>
-            <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?view-week=<?php echo date("w"); ?>&area=2">View
-                week</a>
-            <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?view-day=<?php echo date("d"); ?>&area=1">View
-                day</a>
-        @endif
+
+    <p id="para"></p>
+    <div id="container">
+        @if(isset($Data))
+            @if($Data == 'no')
+                <h5>Sorry, No rooms added to this building yet!</h5>
+            @else
+                {!! $Data !!}
+    </div>
+
+    <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?viewMonth=<?php echo date("m"); ?>&area=1">View
+        month</a>
+    <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?viewWeek=<?php echo date("w"); ?>&area=1&room=5">View
+        week</a>
+    <a href="{{action('\Powhr\Modules\RoomBooking\Controllers\RoomBookingController@getCreateRoomBookingTable') }}?viewDay=<?php echo date("d"); ?>&area=1">View
+        day</a>
+    @endif
     @else
     @endif
     <div class="modal fade" id="powhrModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
